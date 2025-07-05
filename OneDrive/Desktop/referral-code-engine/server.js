@@ -1,18 +1,15 @@
 const express = require("express");
 const app = express();
-const generate = require("./api/generate");
-const redeem = require("./api/redeem");
-const metrics = require("./api/metrics");
+const generate = require("./api/generate-referral-code");
+const redeem = require("./api/redeem-referral-code");
+const metrics = require("./api/referral-metrics");
 
 app.use(express.json());
 
+// Routes
 app.post("/api/generate-referral-code", generate);
 app.post("/api/redeem-referral-code", redeem);
 app.get("/api/referral-metrics", metrics);
 
-module.exports = app; // Required for Vercel to run the app
-
-// Optional (for local testing)
-if (require.main === module) {
-  app.listen(3000, () => console.log("Server running on port 3000"));
-}
+// Vercel requires this export
+module.exports = app;

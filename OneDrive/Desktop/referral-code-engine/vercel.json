@@ -1,11 +1,15 @@
 {
-  "version": 2,
+  "version": 1,
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/api/generate-referral-code", "methods": ["POST"], "dest": "/server.js" },
-    { "src": "/api/redeem-referral-code", "methods": ["POST"], "dest": "/server.js" },
-    { "src": "/api/referral-metrics", "methods": ["GET"], "dest": "/server.js" }
+    {
+      "src": "/.*",
+      "dest": "/server.js"
+    }
   ]
 }
