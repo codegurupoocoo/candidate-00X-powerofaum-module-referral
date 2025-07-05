@@ -6,10 +6,9 @@ const metrics = require("./api/referral-metrics");
 
 app.use(express.json());
 
-// Routes
 app.post("/api/generate-referral-code", generate);
 app.post("/api/redeem-referral-code", redeem);
 app.get("/api/referral-metrics", metrics);
 
-// Vercel requires this export
+// Vercel looks for `module.exports = app`
 module.exports = app;
